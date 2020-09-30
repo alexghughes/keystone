@@ -19,6 +19,8 @@ export type AuthGqlNames = {
 
 export type ResolvedAuthGqlNames = Required<AuthGqlNames> & {
   ItemAuthenticationWithPasswordResult: string;
+  ItemAuthenticationWithPasswordSuccess: string;
+  ItemAuthenticationWithPasswordFailure: string;
   sendItemPasswordResetLinkResult: string;
   sendItemMagicAuthLinkResult: string;
 };
@@ -67,4 +69,26 @@ export type Auth = {
   fields: { [prop: string]: FieldType };
   validateConfig: (keystoneConfig: KeystoneConfig) => void;
   withAuth: (config: KeystoneConfig) => KeystoneConfig;
+};
+
+export enum AuthErrorCode {
+
+  // Password authentication
+  PASSWORD_AUTH_FAILURE, // Generic
+  PASSWORD_AUTH_IDENTITY_NOT_FOUND,
+  PASSWORD_AUTH_SECRET_NOT_SET,
+  PASSWORD_AUTH_MULTIPLE_IDENTITY_MATCHES,
+  PASSWORD_AUTH_SECRET_MISMATCH,
+
+  // Password resets and magic links
+  AUTH_TOKEN_REQUEST_IDENTITY_NOT_FOUND,
+  AUTH_TOKEN_REQUEST_MULTIPLE_IDENTITY_MATCHES,
+  AUTH_TOKEN_REDEMPTION_INVALID_TOKEN,
+  AUTH_TOKEN_REDEMPTION_TOKEN_EXPIRED,
+  AUTH_TOKEN_REDEMPTION_TOKEN_REDEEMED,
+  AUTH_TOKEN_INTERNAL_ERROR,
+
+  // Not used by the auth package itself
+  // Allows custom logic/errors to be generated without replacing the gql output types
+  CUSTOM_ERROR,
 };

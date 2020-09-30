@@ -29,6 +29,8 @@ export function createAuth<GeneratedListTypes extends BaseGeneratedListTypes>(
     createInitialItem: `createInitial${config.listKey}`,
     authenticateItemWithPassword: `authenticate${config.listKey}WithPassword`,
     ItemAuthenticationWithPasswordResult: `${config.listKey}AuthenticationWithPasswordResult`,
+    ItemAuthenticationWithPasswordSuccess: `${config.listKey}AuthenticationWithPasswordSuccess`,
+    ItemAuthenticationWithPasswordFailure: `${config.listKey}AuthenticationWithPasswordFailure`,
     sendItemPasswordResetLink: `send${config.listKey}PasswordResetLink`,
     sendItemPasswordResetLinkResult: `send${config.listKey}PasswordResetLinkResult`,
     sendItemMagicAuthLink: `send${config.listKey}MagicAuthLink`,
