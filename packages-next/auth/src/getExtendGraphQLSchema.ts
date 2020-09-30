@@ -24,7 +24,7 @@ const getErrorMessage = function (identityField: string, secretField: string, it
     case AuthErrorCode.AUTH_TOKEN_INTERNAL_ERROR: return `An unexpected error condition was encountered while creating or redeeming an auth token`;
   }
   return 'No error message defined';
-}
+};
 
 export function getExtendGraphQLSchema({
   listKey,
@@ -80,8 +80,9 @@ export function getExtendGraphQLSchema({
       // We can't assume the work factor so can't include a pre-generated hash to compare but generating a new hash will create a similar delay
       // Changes to the work factor, latency loading the item(s) and many other factors will still be detectable by a dedicated attacker
       // This is far from perfect (but better than nothing)
-      protectIdentities &&
-        (await secretFieldInstance.generateHash('simulated-password-to-counter-timing-attack'));
+      if (protectIdentities) {
+        await secretFieldInstance.generateHash('simulated-password-to-counter-timing-attack');
+      }
       return { success: false, code: protectIdentities ? AuthErrorCode.PASSWORD_AUTH_FAILURE : specificCode };
     }
 
