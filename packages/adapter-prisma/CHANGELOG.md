@@ -1,5 +1,11 @@
 # @keystonejs/adapter-prisma
 
+## 1.0.3
+
+### Patch Changes
+
+- [`f30928db3`](https://github.com/keystonejs/keystone/commit/f30928db31b0c0a10a27b827b44afc1896dfbafe) [#3788](https://github.com/keystonejs/keystone/pull/3788) Thanks [@timleslie](https://github.com/timleslie)! - Added improved documentation.
+
 ## 1.0.2
 
 ### Patch Changes
